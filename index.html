@@ -10,6 +10,8 @@
         <link rel="stylesheet" href="css/L.Control.Layers.Tree.css">
         <link rel="stylesheet" href="css/qgis2web.css">
         <link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2.4.0/src/easy-button.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.in.css" />
         <style>
         html, body, #map {
             width: 100%;
@@ -44,6 +46,8 @@
         <script src="data/Puskesmas_9.js"></script>
         <script src="data/RSKhusus_10.js"></script>
         <script src="data/RSUmum_11.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/leaflet-easybutton@2.4.0/src/easy-button.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.min.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -1451,6 +1455,15 @@
         });
         lay.addTo(map);
         setBounds();
+        L.easyButton('fa-home', function () {
+            map.setView([-7.8013966,110.3647641], 17); //Set zoom dan titik tengah
+        }, 'Go to Home').addTo(map);
+
+        var miniMap = new L.Control.MiniMap(miniMapLayer, {
+            toggleDisplay: true, 
+            minimized: true,
+            position: 'bottomright'
+        }).addTo(map)
         </script>
     </body>
 </html>
